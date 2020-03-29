@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>JavaScriptテストページ</title>
+  <style type="text/css">
+    body, h1, h2, h3, h4, h5, h6,
+    table { font-size:12px; }
+    div.smartphone { background-color:#ccc;}
+    #info    { line-height:22px; }
+    #info ul { padding-left:20px; }
+    #info li { }
+  </style>
+</head>
+<body>
+  <h1>クライアント情報を取得する</h1>
+  <div id="is-smartphone"></div>
+  <div id="info"></div>
+
+  <script src="./js/lib/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="./js/jquery.checkAgent.js"></script>
+  <script type="text/javascript">
+    $(document).ready( function() {
+      // チェック実行
+      $(document.body).checkAgent();
+
+      // スマホかどうかチェック (スマホであればdivタグにsmartphoneクラスが追加される)
+      $('#is-smartphone').checkAgent('add', 'smartphone');
+
+      // 取得したすべてのユーザー情報を出力
+      $('#info').html($.getAgent());
+    });
+  </script>
+
+</body>
+</html>
